@@ -1,0 +1,52 @@
+@startuml Gestion de Stage
+class Etudiant {
+  NCE : entier
+  nom : chaine
+  prenom : chaine
+  classe : chaine
+  create()
+  read()
+  update()
+  delete()
+}
+
+class Enseignant {
+  Matricule : entier
+  nom_Ens : chaine
+  prenom_Ens : chaine
+  create()
+  update()
+  delete()
+  read()
+}
+
+class Soutenance {
+  Numjury : entier
+  date_soutenance : chaine
+  note : réel
+  Nce : entier
+  Matricule : entier  
+  create()
+  update()
+  delete()
+  read()
+}
+
+class Administrateur {
+  id_admin : entier
+  login : chaine
+  mot_de_passe : chaine
+  login()
+  ajouterSoutenance()
+  modifierSoutenance()
+  supprimerSoutenance()
+  ajouterEnseignant()
+  modifierEnseignant()
+  supprimerEnseignant()
+  ajouterEtudiant()
+
+}
+
+Etudiant "1" -- "1" Soutenance  
+Enseignant "1" -- "*..*" Soutenance  
+@enduml

@@ -1,0 +1,16 @@
+why do i want to use classes in this project , well because it gave me classs , it might make the work more tight and more reasonable 
+to access a vriable or somtething like that but 
+are there any methods , maybe set and get and check some bullshit but at the end of the day every thing will be accessed throught the 
+data base .  
+
+----
+This is the only directory your web server (like Apache or Nginx) should be configured to serve files from directly. This is a crucial security measure – it prevents users from accessing your core PHP code (src/), configuration files (config/), or vendor files directly via their browser.
+
+how can i confgure the apache2 to only serve that project ? 
+
+    create the corect folder disposition 
+    configure apche2 
+----
+Namespaces: You should use PHP namespaces that mirror your directory structure within src/. For example, the User class inside src/Model/ would typically have the namespace namespace App\Model; (assuming App is your top-level namespace defined in composer.json).
+
+explain namespaces and give me an example of use . 
