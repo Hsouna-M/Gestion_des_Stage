@@ -6,14 +6,14 @@
     <title>Login Page</title>
 </head>
 <body>
-  <form action="index.php" method="post"> 
+  <form action="../../test.php" method="Post"> 
     <label for="login">Login:</label>
     <input type="text" id="login" name="login" required><br><br>
 
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required><br><br>
 
-    <input type="submit" value="Login">
+    <input type="submit">Login</input>
   </form> 
 </body>
 </html>

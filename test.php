@@ -1,10 +1,11 @@
 <?php
 
-require_once 'src/database/connexion.php' ; 
-require_once 'src/Model/etudiant.php' ;
-require_once 'src/Model/enseignant.php' ;
-require_once 'src/Model/soutenance.php';
-require_once 'src/Model/administrateur.php';
+// require_once 'src/database/connexion.php' ; 
+// require_once 'src/Model/etudiant.php' ;
+// require_once 'src/Model/enseignant.php' ;
+// require_once 'src/Model/soutenance.php';
+// require_once 'src/Model/administrateur.php';
+
 // require_once 'src/Model/administrateur.php';
 // echo 'server working\n' ;
 
@@ -69,5 +70,20 @@ require_once 'src/Model/administrateur.php';
 // require 'src/Controller/login_controller.php';
 // $controller = new LoginController();
 // $controller->show_loginForm();
- 
+
+//test loginController and the form 
+require 'src/database/connexion.php';
+echo "is this working " ; 
+// $controller = new LoginController() ; 
+if(isset($_POST['submit'])){
+        $admin = new Administrateur($_POST['id'], $_POST['login'], $_POST['mdp']); 
+
+        $instance = $admin->login($pdo); 
+        echo "login controller login_admin method is processing "; 
+        if ($instance && $instance->num_rows==1) {
+            header("location:adminPage.php"); 
+        }else{
+            echo "login failed you are not an admin ";
+        } 
+    }else{echo "this is so fuckt up " ; }
 ?>
