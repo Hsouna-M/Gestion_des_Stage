@@ -1,9 +1,12 @@
 <?php
+class dbconfig{
+    private $dbname="gestion_stage";
+    private $user="admin_gestion_stage";
+    private $password="password";
+    private $charset='utf8mb4' ; 
+    private $host="localhost";
 
-$dbname="gestion_stage";
-$user="admin_gestion_stage";
-$password="password";
-$host="localhost";
-$charset='utf8mb4' ; 
+}
+
 
 ?>

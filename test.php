@@ -1,89 +1,50 @@
 <?php
+/* notes : 
+- var_export() : prints the variable in a php valid form array 
+        exapmle  :( 0 => array ( 'nce' => 12, 0 => 12, 'nom' => 'hsouna', 1 => 'hsouna', 'prenom' => 'med aziz ', 2 => 'med aziz ', 'classe' => 'inj', 3 => 'inj', ), )
 
-// require_once 'src/database/connexion.php' ; 
-// require_once 'src/Model/etudiant.php' ;
-// require_once 'src/Model/enseignant.php' ;
-// require_once 'src/Model/soutenance.php';
-// require_once 'src/Model/administrateur.php';
 
-// require_once 'src/Model/administrateur.php';
-// echo 'server working\n' ;
+*/ 
+require 'AutoLoader.php' ; 
 
-//  $etudiant = new Etudiant(123456789,"testremove","testremove","ing-3-j-A");
-// test add etudiant 
-//  $etudiant->create($pdo) ; 
-//works
 
-// test remove etudiant 
-// $etudiant->remove($pdo); 
-//works 
-//test update etudiant 
-// $etudiant2= new Etudiant(123456789,"hsouna","med aziz","ing-3-j-A");
-// $etudiant2->update($pdo);
-//works     
-// fetching the data 
-// $fetch_row = $etudiant->read($pdo);
-// echo "nom : ". $fetch_row['nom'];
-// echo "nce : ". $fetch_row['nce'];
+//test etudiantModel
 
-// test crud enseignant working sucsessfully 
-// $enseignant = new Enseignant(123456789,'','');
-// $fetch_row = $enseignant->read($pdo);
-// echo "matricule: ". $fetch_row['matricule'];
-// echo "nom : ". $fetch_row['nom'];
-// $enseignant->create($pdo);
-// $enseignant->setPrenom("waddey");
-// $enseignant->update($pdo);
-// $enseignant->remove($pdo);
+use gestion_stage\classes\Etudiant ; 
+use gestion_stage\Model\etudiantModel ; 
 
-// test crud soutenance 
-// $etudiant = new Etudiant(145623, "hsouna","mohamed aziz","inj-3ja");
-// $etudiant->create($pdo);
-// $enseignant = new Enseignant( 1236546, "kirmene","marzouki");
-// $enseignant->create($pdo); 
-// $soutenance= new Soutenance(656556,"09/06/24",18,$etudiant, $enseignant);
-// $soutenance->setDateSoutenance("25/06/25") ;
-// $soutenance->create($pdo);
-// $soutenance->update($pdo);
-// $result_fetch = $soutenance->read($pdo);
-// echo $result_fetch['date'] ; 
-// works 
+$etudiantModelInstance= new etudiantModel(); 
+// $etudiant = new Etudiant(12,"hsouna","med aziz ","inj" ) ;
+// $etudiantModelInstance->create($etudiant) ; 
+// var_dump($etudiantModelInstance->readBy_nce(12)  ) ;
+// var_dump($etudiantModelInstance->readBy_nom("hsouna"))  ;
+// var_dump($etudiantModelInstance->readBy_prenom("mohamed aziz"))  ;
+// var_export($etudiantModelInstance->readBy_classe("inj"))  ;
+// $etudiantModelInstance->remove_by_nce(12) ;
 
-// test administrateur 
-// $etudiant = new Etudiant(1, "test_admin_add","test_admin_add","test_admin_add");
-// $enseignant = new Enseignant( 11, "test_admin_add","test_admmin_add");
-// $soutenance= new Soutenance(4545,"09/06/24",18,$etudiant, $enseignant);
 
-// test login 
-// $amdin = new Administrateur(1,"admin", "password");
-// $res = $amdin->login($pdo); 
-// if ($res  ) {
-//     echo "login successfully"; 
-// }else{
-//     echo "login not succesfully bloddy ";
-// }
-// $amdin->addetudiant($etudiant, $pdo);
-// $amdin->addenseignant($enseignant,$pdo);
-// $amdin->addSoutenance($soutenance, $pdo);
+// test abstractModel
 
-// test controller mvc 
-// require 'src/Controller/login_controller.php';
-// $controller = new LoginController();
-// $controller->show_loginForm();
+// use gestion_stage\Model\abstractModel;
+// $modelInstance= new abstractModel() ; 
+// if ($modelInstance != null) {
+//     echo "connection success" ; 
+//    $rows= $modelInstance->databaseInstance->query("select * from etudiant");
+//    foreach ($rows as $row ) {
+//     var_dump($row) ;
+//    }
+// }else{ echo "connextion problem" ;}
 
-//test loginController and the form 
-require 'src/database/connexion.php';
-echo "is this working " ; 
-// $controller = new LoginController() ; 
-if(isset($_POST['submit'])){
-        $admin = new Administrateur($_POST['id'], $_POST['login'], $_POST['mdp']); 
 
-        $instance = $admin->login($pdo); 
-        echo "login controller login_admin method is processing "; 
-        if ($instance && $instance->num_rows==1) {
-            header("location:adminPage.php"); 
-        }else{
-            echo "login failed you are not an admin ";
-        } 
-    }else{echo "this is so fuckt up " ; }
-?>
+// test db connextion 
+
+// use gestion_stage\database\db;
+// $conect = db::getConnexionInstance() or null ; 
+// if ($conect != null) {
+//     echo "connection success" ; 
+//    $rows= $conect->query('select * from etudiant');
+//    foreach ($rows as $row ) {
+//     var_dump($row) ;
+//    }
+// }else{ echo "connextion problem" ;}
+

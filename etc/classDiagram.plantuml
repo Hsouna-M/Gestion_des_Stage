@@ -1,23 +1,52 @@
 @startuml Gestion de Stage
+
+class db {
+  - static instance 
+  - static connect(): PDO
+  - getInstance() : instance : PDO
+}
+
+class abstractModel{
+  - database  
+}
+
+db <|-- abstractModel 
+
+class etudiantModel{
+  + create(Etudiant e) : bool
+  + update(Etudiant e) : bool
+  + delete(Etudiant e) : bool
+  + read_by(nce) : assoc_array  
+  + read_by(nom) : assoc_array  
+  + read_by(prenom) : assoc_array  
+  + read_by(classe) : assoc_array  
+}
+ 
+ etudiantModel ..> Etudiant
+ etudiantModel --|> abstractModel 
+
 class Etudiant {
   NCE : entier
   nom : chaine
   prenom : chaine
   classe : chaine
-  create()
-  read()
-  update()
-  delete()
-}
+  geters_and_setters()
+  }
 
 class Enseignant {
   Matricule : entier
   nom_Ens : chaine
   prenom_Ens : chaine
-  create()
-  update()
-  delete()
-  read()
+  geters_and_setters()
+  }
+
+class enseignantModel{
+  + create(Enseignant e) : bool
+  + update(Enseignant e) : bool
+  + delete(Enseignant e) : bool
+  + read_by(matricule) : assoc_array  
+  + read_by(nom) : assoc_array  
+  + read_by(prenom) : assoc_array  
 }
 
 class Soutenance {
@@ -26,27 +55,43 @@ class Soutenance {
   note : réel
   Nce : entier
   Matricule : entier  
-  create()
-  update()
-  delete()
-  read()
+  geters_and_setters()
 }
+
+class soutenanceModel{
+  + create(Soutenance s) : bool
+  + update(Soutenance s) : bool
+  + delete(Soutenance s) : bool
+  + read_by(numjury) : assoc_array  
+  + read_by(date) : assoc_array  
+  + read_by(note) : assoc_array  
+  + read_by(nce) : assoc_array  
+  + read_by(matricule) : assoc_array  
+}
+soutenanceModel --|> abstractModel
 
 class Administrateur {
   id_admin : entier
-  login : chaine
+  name : chaine
   mot_de_passe : chaine
-  login()
-  ajouterSoutenance()
-  modifierSoutenance()
-  supprimerSoutenance()
-  ajouterEnseignant()
-  modifierEnseignant()
-  supprimerEnseignant()
-  ajouterEtudiant()
-
+  geters_and_setters()
 }
 
-Etudiant "1" -- "1" Soutenance  
-Enseignant "1" -- "*..*" Soutenance  
+class adminModel{
+  + read_by(name) : assoc_array  
+}
+
+adminController ..> adminModel
+abstractModel <|-- adminModel
+abstractModel <|-- soutenanceModel 
+abstractModel <|-- enseignantModel 
+Enseignant <.. enseignantModel 
+Soutenance <.. soutenanceModel 
+
+class adminController{
+  - login(Administrateur a) : bool
+  - loadAdminPannel() : view
+}
+
+
 @enduml
