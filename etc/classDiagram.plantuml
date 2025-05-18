@@ -68,7 +68,6 @@ class soutenanceModel{
   + read_by(nce) : assoc_array  
   + read_by(matricule) : assoc_array  
 }
-soutenanceModel --|> abstractModel
 
 class Administrateur {
   id_admin : entier
@@ -78,7 +77,8 @@ class Administrateur {
 }
 
 class adminModel{
-  + read_by(name) : assoc_array  
+  + read(Administrateur $admin)):assoc_array  
+  + create(Administrateur $admin)):bool  
 }
 
 adminController ..> adminModel
@@ -93,5 +93,6 @@ class adminController{
   - loadAdminPannel() : view
 }
 
+adminModel ..> Administrateur
 
 @enduml

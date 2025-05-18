@@ -2,18 +2,52 @@
 /* notes : 
 - var_export() : prints the variable in a php valid form array 
         exapmle  :( 0 => array ( 'nce' => 12, 0 => 12, 'nom' => 'hsouna', 1 => 'hsouna', 'prenom' => 'med aziz ', 2 => 'med aziz ', 'classe' => 'inj', 3 => 'inj', ), )
-
-
 */ 
+
 require 'AutoLoader.php' ; 
+require 'ErrorHandler.php' ; 
+// echo $undefinedVariable ; 
+
+// foreach ($_SERVER as $key => $value) echo "$key = $value \n" ; 
+
+// echo $_SERVER['HTTP_HOST'] ; 
+// echo $_SERVER['REQUEST_METHOD'] ; 
+// echo $_SERVER['REQUEST_URI'] ; 
+// echo $_SERVER['SERVER_NAME'] ; 
+// echo __FILE__; 
+
+// //test adminModel 
+
+// use gestion_stage\classes\Administrateur ; 
+// use gestion_stage\Model\adminModel ; 
+
+// $ModelInstance= new adminModel(); 
+// $object = new Administrateur(2, "sadok", "selmi") ;
+// // $ModelInstance->create($object) ; 
+// var_dump($ModelInstance->read($object)  ) ;
+// $ModelInstance->readBy_matricule() ;
 
 
-//test etudiantModel
 
-use gestion_stage\classes\Etudiant ; 
-use gestion_stage\Model\etudiantModel ; 
+// //test enseignantModel 
 
-$etudiantModelInstance= new etudiantModel(); 
+// use gestion_stage\classes\Enseignant ; 
+// use gestion_stage\Model\enseignantModel ; 
+// $ModelInstance= new enseignantModel(); 
+// $object = new Enseignant(123, "sadok", "selmi") ;
+// $ModelInstance->create($object) ; 
+// var_dump($ModelInstance->readBy_matricule(12)  ) ;
+// var_dump($ModelInstance->readBy_nom("sadok"))  ;
+// var_dump($ModelInstance->readBy_prenom("selmi"))  ;
+// // $ModelInstance->readBy_matricule() ;
+
+
+
+// //test etudiantModel
+
+// use gestion_stage\classes\Etudiant ; 
+// use gestion_stage\Model\etudiantModel ; 
+// $etudiantModelInstance= new etudiantModel(); 
 // $etudiant = new Etudiant(12,"hsouna","med aziz ","inj" ) ;
 // $etudiantModelInstance->create($etudiant) ; 
 // var_dump($etudiantModelInstance->readBy_nce(12)  ) ;
