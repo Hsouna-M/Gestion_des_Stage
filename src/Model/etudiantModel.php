@@ -15,15 +15,15 @@ class etudiantModel extends abstractModel{
             
             //preparing the stement to insert the parameters created above . 
             $stmnt= $this->databaseInstance->prepare($sql);               
-            
+
             //inserting the values 
             $stmnt->bindParam(':nce', $etudiant->getNce()) ; 
             $stmnt->bindParam(':nom', $etudiant->getNom()) ; 
             $stmnt->bindParam(':prenom', $etudiant->getPrenom()) ; 
             $stmnt->bindParam(':classe', $etudiant->getClasse()) ; 
-
             //executing the command 
-            $stmnt->execute() ; 
+            $stmnt->execute(); 
+
 
         }catch(Exception $e){
             echo "Error creating the Student \n Message: ".$e->getMessage() ; 
@@ -31,7 +31,7 @@ class etudiantModel extends abstractModel{
     }
     
     //remove etudiant 
-    public function remove_by_nce($nce){
+    public function remove_by_nce($nce) : bool {
         
         try {
             $sql = "delete from etudiant where nce = :nce"; 
@@ -41,9 +41,11 @@ class etudiantModel extends abstractModel{
             $stmnt->bindParam(':nce', $nce);
             $stmnt-> execute();
             echo "deleted successfully";
+            return true ; 
 
         } catch (Exception $e) {
             echo "error removing etudiant \n Issue :  ".$e->getMessage() ; 
+            return false ; 
         }
     }
 
@@ -75,16 +77,15 @@ class etudiantModel extends abstractModel{
     public function readBy_nce($nce){
 
         try {
-            $sql = "select * from etudiant where `nce`=:nce" ; 
+            $sql = "select * from etudiant where nce=:nce" ; 
             $stmnt= $this->databaseInstance->prepare($sql) ; 
-
             $stmnt-> bindParam(':nce',$nce ) ; 
-
             $stmnt -> execute() ; 
 
             //fetch() : single row 
             return $resutl = $stmnt->fetch() ; 
             // returning single row table result  
+
         } catch (Exception $e) {
             echo "problem in the readEtudiant method \n Message ".$e->getMessage() ;             
         }
@@ -140,6 +141,24 @@ class etudiantModel extends abstractModel{
 
         } catch (Exception $e) {
             echo "problem in the readEtudiant method \n Message ".$e->getMessage() ;             
+        }
+
+    }
+
+
+    public function fetchAllEtudiant(){
+
+        try {
+            $stmnt= $this->databaseInstance->prepare("select * from etudiant") ; 
+            $stmnt->execute() ; 
+            //fetch() : single row 
+            return $stmnt->fetchAll() ;  
+
+
+        } catch (Exception $e) {
+            echo "problem in the fetchEtudiant method \n Message ".$e->getMessage() ;             
+            return null ;
+
         }
 
     }

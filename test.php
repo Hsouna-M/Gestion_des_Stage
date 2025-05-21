@@ -6,8 +6,10 @@
 
 require 'AutoLoader.php' ; 
 require 'ErrorHandler.php' ; 
-// echo $undefinedVariable ; 
+use gestion_stage\Controller\LoginController ; 
 
+
+// echo $undefinedVariable ; 
 // foreach ($_SERVER as $key => $value) echo "$key = $value \n" ; 
 
 // echo $_SERVER['HTTP_HOST'] ; 

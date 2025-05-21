@@ -81,18 +81,24 @@ class adminModel{
   + create(Administrateur $admin)):bool  
 }
 
-adminController ..> adminModel
+LoginController ..> adminModel
 abstractModel <|-- adminModel
 abstractModel <|-- soutenanceModel 
 abstractModel <|-- enseignantModel 
 Enseignant <.. enseignantModel 
 Soutenance <.. soutenanceModel 
 
-class adminController{
+class LoginController{
   - login(Administrateur a) : bool
   - loadAdminPannel() : view
 }
 
 adminModel ..> Administrateur
+
+class abstractController{
+  + loadBadRequestview() 
+}
+
+LoginController --|> abstractController
 
 @enduml

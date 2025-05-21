@@ -3,7 +3,7 @@ namespace gestion_stage\database ;
 use PDO ; 
 
 class db{
-   private static $connectInstance ; 
+   private static $connectInstance = null ; 
 
    public function __construct() { die("not allowed to make a connexion instance"); }
 

@@ -8,7 +8,7 @@ class abstractModel extends db {
 
     public function __construct(){ $this->databaseInstance= self::getConnexionInstance() ; }
 
-    public function get_databaseInstance(){ return $this->databaseInstance ;}
+    // public function get_databaseInstance(){ return $this->databaseInstance ;}
 
 }
 

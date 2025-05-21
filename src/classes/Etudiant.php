@@ -1,6 +1,6 @@
 <?php
 
-namespace gestion_stage\classes ; 
+namespace gestion_stage\classes; 
 
 class Etudiant  {
 
@@ -45,6 +45,10 @@ class Etudiant  {
 
     public function setClasse($classe){
         $this->classe = $classe;
+    }
+
+    public function getClasse() : string{
+        return $this->classe ;
     }
     
         
