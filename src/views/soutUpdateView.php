@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Étudiant</title>
+    <title>Update Soutenance</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Font Awesome CDN -->
@@ -52,31 +52,32 @@
         </div>
     </nav>
 
-    <!-- Add Étudiant Form -->
+    <!-- Update Soutenance Form -->
     <div class="form-container">
         <div class="form-card">
             <div class="card shadow-sm p-4">
-                <h2 class="card-title text-center mb-4">Add Étudiant</h2>
-                <form action="/etudiant/add" method="POST">
+                <h2 class="card-title text-center mb-4">Update Soutenance</h2>
+                <?php
+                $numjury = htmlspecialchars($sout['numjury']);
+                $note = htmlspecialchars($sout['note']);
+                $date = htmlspecialchars($sout['date']);
+                ?>
+                <form action="/soutenance/update" method="POST">
                     <div class="mb-3">
-                        <label for="nce" class="form-label">NCE</label>
-                        <input type="text" class="form-control" id="nce" name="nce" required>
+                        <label for="numjury" class="form-label">Numéro de Jury</label>
+                        <input type="text" class="form-control" id="numjury" name="numjury" value="<?php echo $numjury; ?>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" required>
+                        <label for="note" class="form-label">Note</label>
+                        <input type="text" class="form-control" id="note" name="note" value="<?php echo $note; ?>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="prenom" class="form-label">Prénom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="classe" class="form-label">Classe</label>
-                        <input type="text" class="form-control" id="classe" name="classe" required>
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" value="<?php echo $date; ?>" required>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Add Étudiant
+                            <i class="fas fa-save"></i> Update Soutenance
                         </button>
                     </div>
                 </form>

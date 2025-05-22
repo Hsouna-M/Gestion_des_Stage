@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Étudiant</title>
+    <title>Add Soutenance</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Font Awesome CDN -->
@@ -52,31 +52,35 @@
         </div>
     </nav>
 
-    <!-- Add Étudiant Form -->
+    <!-- Add Soutenance Form -->
     <div class="form-container">
         <div class="form-card">
             <div class="card shadow-sm p-4">
-                <h2 class="card-title text-center mb-4">Add Étudiant</h2>
-                <form action="/etudiant/add" method="POST">
+                <h2 class="card-title text-center mb-4">Add Soutenance</h2>
+                <form action="/soutenance/add" method="POST">
+                    <div class="mb-3">
+                        <label for="numjury" class="form-label">Numéro de Jury</label>
+                        <input type="text" class="form-control" id="numjury" name="numjury" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="matricule" class="form-label">Matricule</label>
+                        <input type="text" class="form-control" id="matricule" name="matricule" required>
+                    </div>
                     <div class="mb-3">
                         <label for="nce" class="form-label">NCE</label>
                         <input type="text" class="form-control" id="nce" name="nce" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" required>
+                        <label for="note" class="form-label">Note</label>
+                        <input type="text" class="form-control" id="note" name="note" required>
                     </div>
                     <div class="mb-3">
-                        <label for="prenom" class="form-label">Prénom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="classe" class="form-label">Classe</label>
-                        <input type="text" class="form-control" id="classe" name="classe" required>
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
                     </div>
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Add Étudiant
+                            <i class="fas fa-plus"></i> Ajouter Soutenance
                         </button>
                     </div>
                 </form>

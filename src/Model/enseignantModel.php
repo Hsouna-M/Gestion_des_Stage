@@ -73,19 +73,16 @@ class enseignantModel extends abstractModel{
     }
 
 
-
     public function readBy_matricule($matricule){
 
         try {
-            $sql = "select * from enseignant where `matricule`=:matricule" ; 
+
+            $sql = "select * from enseignant where matricule=:matricule" ;
             $stmnt= $this->databaseInstance->prepare($sql) ; 
-
-            $stmnt-> bindParam(':matricule', $matricule) ; 
-
+            $stmnt-> bindParam(':matricule',$matricule ) ; 
             $stmnt -> execute() ; 
-
-            //fetch() : single row 
             return $resutl = $stmnt->fetch() ; 
+
             // returning single row table result  
         } catch (Exception $e) {
             echo "problem in the readenseignant method \n Message ".$e->getMessage() ;             

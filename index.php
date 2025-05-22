@@ -8,6 +8,7 @@ use gestion_stage\Controller\EnsController;
 use gestion_stage\Controller\LoginController;
 use gestion_stage\Controller\ErrorController;
 use gestion_stage\Controller\EtudiantController;
+use gestion_stage\Controller\soutController;
 
 $request = new Request();
 
@@ -62,15 +63,25 @@ switch ($request->getPath()) {
 
 //soutenance routing 
     case '/soutenance' :
-        break;
-
-    case '/soutenance/add' :
+        $controller = new soutController() ; 
+        $controller->fetchSout() ;
         break;
 
     case '/soutenance/update' :
+        $controller = new soutController() ; 
+        if($request->getMethod() == 'GET') $controller->getUpdateView($_GET['numjury']) ;
+        elseif($request->getMethod() == 'POST') $controller->update($_POST['numjury'],$_POST['date'],$_POST['note']);
+        break;
+
+    case '/soutenance/add' :
+        $controller = new soutController() ; 
+        if ($request->getMethod() == 'GET') $controller->loadView_Form() ;
+        elseif ( $request->getMethod() == 'POST') $controller->add($_POST['numjury'], $_POST['date'],$_POST['note'],$_POST['nce'],$_POST['matricule']) ; 
         break;
 
     case '/soutenance/delete' :
+        $controller =new soutController() ; 
+        if ($request ->getMethod() == 'POST') $controller->delete($_POST['numjury']) ;
         break;
 
 
