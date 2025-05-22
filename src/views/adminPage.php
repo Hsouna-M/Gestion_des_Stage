@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <h1>Welcome Back <?php echo $_SESSION['admin']; ?> </h1>
+    <h1>Welcome Back  <?php echo $_SESSION['admin']; ?> </h1>
+    <h1><?php echo $_SESSION['auth']; ?> </h1>
     <div>
         <h2>Gerer soutenance</h2>
         <a href="/soutenance">consulter</a>
@@ -22,6 +23,10 @@
         <h2>Gerer enseignant</h2>
         <a href="/enseignant">consulter</a>
     </div>
+    <div>
+        <a href="/login">logout</a>
+    </div>
+   
 </body>
 
 </html>

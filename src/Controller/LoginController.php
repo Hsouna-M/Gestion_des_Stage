@@ -24,20 +24,17 @@ class LoginController extends abstractController{
     public function loadView_login(){ include __DIR__."/../views/login.php" ; }
     public function loadView_adminPage(){ include __DIR__."/../views/adminPage.php" ; }
 
-    public function handleLogin($login , $password):bool{
+    public function handleLogin($login , $password ):bool{
         //test if the submit is made 
-        if(!isset($login) || !isset($password)) return false ;
+          if(!isset($login) || !isset($password)) return false ;
 
-        $adminInstance = new Administrateur(1 , $login , $password) ;
-        $model = new adminModel() ; 
+            $adminInstance = new Administrateur(1 , $login , $password) ;
+            $model = new adminModel() ; 
+            if(! $model -> read($adminInstance))return false ;
+            return true ;
 
-        if(! $model -> read($adminInstance))return false ;
+  }
 
-        return true ;
-
-
-    }
-    
 }
 
 

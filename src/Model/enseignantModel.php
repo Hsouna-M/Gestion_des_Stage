@@ -36,8 +36,9 @@ class enseignantModel extends abstractModel{
             $stmnt =$this->databaseInstance->prepare($sql) ; 
          
             //binding parameters 
-            $stmnt->bindParam(':matricule', $matricule());
+            $stmnt->bindParam(':matricule', $matricule);
             $stmnt-> execute();
+            return true ;
             echo "deleted successfully";
 
         } catch (Exception $e) {
@@ -91,44 +92,20 @@ class enseignantModel extends abstractModel{
         }
 
     }
-    
 
-
-
-   public function readBy_nom($nom){
+    public function fetchAllEns(){
 
         try {
-            $sql = "select * from enseignant where `nom`=:nom" ; 
-            $stmnt= $this->databaseInstance->prepare($sql) ; 
-            $stmnt-> bindParam(':nom', $nom) ; 
-            $stmnt -> execute() ; 
-
+            $stmnt= $this->databaseInstance->prepare("select * from enseignant") ; 
+            $stmnt->execute() ; 
             //fetch() : single row 
-            return $resutl = $stmnt->fetchAll() ; 
-            // returning single row table result  
+            return $stmnt->fetchAll() ;  
+
 
         } catch (Exception $e) {
-            echo "problem in the readenseignant method \n Message ".$e->getMessage() ;             
-        }
+            echo "problem in the fetchEnseignant method \n Message ".$e->getMessage() ;             
+            return null ;
 
-    }
-
-
-
-   public function readBy_prenom($prenom){
-
-        try {
-
-            $sql = "select * from enseignant where `prenom`=:prenom" ; 
-            $stmnt= $this->databaseInstance->prepare($sql) ; 
-            $stmnt-> bindParam(':prenom', $prenom) ; 
-            $stmnt -> execute() ; 
-
-            //fetch() : single row 
-            return $resutl = $stmnt->fetchAll() ; 
-            // returning single row table result  
-        } catch (Exception $e) {
-            echo "problem in the readenseignant method \n Message ".$e->getMessage() ;             
         }
 
     }

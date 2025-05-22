@@ -47,7 +47,7 @@ class EtudiantController extends abstractController
     }
 
     public function getEtudiantUpdateView($nce) {
-
+        
         //im creating the model object twice think about it 
         $model = new etudiantModel();
         $etudiantInstance= $model->readBy_nce($nce) ;
@@ -63,6 +63,7 @@ class EtudiantController extends abstractController
         header("location: /etudiant"); 
 
     }
+
     }
 
 
