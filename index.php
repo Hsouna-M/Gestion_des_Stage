@@ -1,8 +1,11 @@
 <?php
 
+
 include 'AutoLoader.php';
 include 'ErrorHandler.php';
 
+// this project still needs session handling and security stuff 
+// this is it , i might implement an agent in this project some day i dont know 
 use gestion_stage\classes\Request;
 use gestion_stage\Controller\EnsController;
 use gestion_stage\Controller\LoginController;
